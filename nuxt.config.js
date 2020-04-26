@@ -6,17 +6,33 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: "%s - " + process.env.npm_package_name,
-    title: process.env.npm_package_name || "",
+    // titleTemplate: "%s - " + process.env.npm_package_name,
+    // title: process.env.npm_package_name || "",
+    title: "I love you.",
     meta: [
       { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: process.env.npm_package_description || "" }
+      {
+        name: "viewport",
+        content:
+          "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+      },
+      {
+        hid: "description",
+        name: "description",
+        content: process.env.npm_package_description || ""
+      }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: 'stylesheet', href: "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"},
-      { rel: 'stylesheet', href: "https://fonts.googleapis.com/css?family=Pacifico&display=swap"}
+      {
+        rel: "stylesheet",
+        href:
+          "https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat&display=swap"
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css?family=Pacifico&display=swap"
+      }
     ]
   },
   /*
@@ -80,6 +96,14 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        loader: "file-loader",
+        options: {
+          name: "~/assets/music.mp3"
+        }
+      });
+    }
   }
 };
