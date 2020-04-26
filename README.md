@@ -1,6 +1,6 @@
 # greet
 
-> ILY J
+> ILY
 
 ## Build Setup
 
