@@ -1,10 +1,10 @@
 <template>
-  <div :style="'background:' + (darkMode() ? '#171717' : '#f5f5f5')">
+  <div :class="darkMode() ? 'darkBG' : 'lightBG'">
     <vue-particles
       class="particles"
       :color="darkMode() ? '#f5f5f5' : '#171717'"
       :particleOpacity="0.7"
-      :particlesNumber="50"
+      :particlesNumber="30"
       shapeType="circle"
       :particleSize="4"
       linesColor="#dedede"
@@ -18,28 +18,50 @@
       :clickEffect="true"
       clickMode="push"
     />
+    <audio src="~/assets/music.mp3" autoplay controls />
     <div class="main">
       <vue-typed-js
         :showCursor="false"
         :strings="[greetings() + ', ' + nicknames + '!']"
       >
-        <h1 class="typing" :style="'color:' + (darkMode() ? '#f5f5f5' : '#171717')"></h1>
+        <h1 class="typing"></h1>
       </vue-typed-js>
+      <h2 class="quotes quotes-main">{{ quotes.quotes }}</h2>
+      <h3 class="quotes author">{{ quotes.author }}</h3>
     </div>
   </div>
-  <!-- <v-btn fab icon color="red" class="musicPlayer">
-        <v-icon>mdi-play</v-icon>
-      </v-btn>
-      <video src="https://www.youtube.com/watch?v=bu_86J8gbmA"></video> -->
 </template>
 
 <script>
+import quotesFile from "~/assets/quotes.js";
+if (process.browser) {
+  function random(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+  window.onNuxtReady(app => {
+    document.addEventListener("click", function(ev) {
+      const x = ev.clientX;
+      const y = ev.clientY;
+      let el = document.createElement("div");
+      el.innerHTML = `<h1>${random(["♥", "♥♥", "♥♥♥"])}</h1>`;
+      el.classList.add("popup");
+
+      el.style.left = `${x}px`;
+      el.style.top = `${y}px`;
+      document.body.appendChild(el);
+      setTimeout(function() {
+        el.style.display = "none";
+      }, 3000);
+    });
+  });
+}
 export default {
   transition: "slide-x-transition",
   data() {
     return {
       // prettier-ignore
       nicknames: this.random(["Ava", "Babe", "Sayang", "Avakuu", "Cintuu"]),
+      quotes: this.random(quotesFile),
       greetings: function() {
         const now = new Date().getHours();
         if (now > 18) return "Good Evening";
@@ -67,8 +89,35 @@ export default {
 </script>
 
 <style lang="scss">
-h1 {
-  font-family: "Pacifico", cursive;
+.darkBG,
+.lightBG {
+  width: 100vw;
+}
+.darkBG {
+  background: linear-gradient(137deg, #2d1f3d, #614385, #516395, #6b82c2);
+  background-size: 800% 800%;
+  color: #121829;
+
+  -o-webkit-animation: darkGradient 11s ease infinite;
+  -o-moz-animation: darkGradient 11s ease infinite;
+  animation: darkGradient 11s ease infinite;
+}
+.lightBG {
+  background: linear-gradient(137deg, #ffc3a0, #ffafbd, #dd5e89);
+  background-size: 600% 600%;
+  color: #4f3d3f;
+
+  -o-webkit-animation: lightGradient 8s ease infinite;
+  -o-moz-animation: lightGradient 8s ease infinite;
+  animation: lightGradient 8s ease infinite;
+}
+audio {
+  display: none;
+}
+.particles canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 .main {
   height: 100vh;
@@ -78,16 +127,101 @@ h1 {
   flex-flow: column;
 }
 .typing {
-  margin-top: -50%;
+  font-family: "Lilita One", cursive;
+  font-size: 2.1rem;
+  margin-top: -20%;
+}
+.quotes {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+.quotes-main {
+  font-size: 1.1rem;
+}
+.author {
+  font-size: 0.7rem;
+}
+.popup {
+  display: block;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  margin-left: -50px;
+  margin-top: -40px;
+  background: transparent;
 }
 /*.musicPlayer {
   position: fixed;
   bottom: 3vh;
   right: 5vw;
 }*/
-.particles canvas {
-  width: 100%;
-  height: 100%;
-  position: absolute;
+
+@-webkit-keyframes lightGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+@-moz-keyframes lightGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+@keyframes lightGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+
+@-webkit-keyframes darkGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+@-moz-keyframes darkGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+@keyframes darkGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
 }
 </style>
