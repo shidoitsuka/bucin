@@ -18,11 +18,17 @@
       :clickEffect="true"
       clickMode="push"
     />
-    <audio src="~/assets/music.mp3" autoplay controls />
+    <audio src="~/assets/music.ogg" autoplay controls />
     <div class="main">
       <vue-typed-js
+        class="vue-typed"
         :showCursor="false"
-        :strings="[greetings() + ', ' + nicknames + '!']"
+        :loop="true"
+        :strings="[greetings() + ', ' + nicknames + '! ^5000', 'I always wanted to tell you... ^2500', 'Nevermind! >///<']"
+        :backDelay="500"
+        :typeSpeed="100"
+        :backSpeed="20"
+        :contentType="'null'"
       >
         <h1 class="typing"></h1>
       </vue-typed-js>
@@ -129,7 +135,10 @@ audio {
 .typing {
   font-family: "Lilita One", cursive;
   font-size: 2.1rem;
-  margin-top: -20%;
+  text-align: center;
+}
+.vue-typed {
+  min-height: 4em;
 }
 .quotes {
   font-family: "Montserrat", sans-serif;
