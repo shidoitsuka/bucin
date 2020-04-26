@@ -20,6 +20,7 @@
     />
     <audio src="~/assets/music.ogg" autoplay controls />
     <div class="main">
+      <!-- prettier-ignore -->
       <vue-typed-js
         class="vue-typed"
         :showCursor="false"
