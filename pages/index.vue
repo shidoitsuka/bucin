@@ -150,6 +150,10 @@ audio {
   margin-left: -50px;
   margin-top: -40px;
   background: transparent;
+  animation: fadeIn linear 1s;
+  -o-webkit-animation: fadeIn linear 1s;
+  -o-moz-animation: fadeIn linear 1s;
+  opacity: 0;
 }
 /*.musicPlayer {
   position: fixed;
@@ -222,6 +226,33 @@ audio {
   }
   100% {
     background-position: 43% 0%;
+  }
+}
+
+@keyframes fadeIn {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: -100px;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: -100px;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: -100px;
   }
 }
 </style>
