@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       // prettier-ignore
-      nicknames: this.random(["Ava", "Babe", "Sayang", "Avakuu", "Cintuu"]),
+      nicknames: this.random(["Selviyanti", "Babe", "Sayang", "Avakuu", "Cintuu"]),
       quotes: this.random(quotesFile),
       greetings: function() {
         const now = new Date().getHours();
