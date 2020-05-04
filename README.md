@@ -3,8 +3,8 @@ I made this for you.
 
 ## <u>Build Setup</u>
 1. Clone this project `git clone https://github.com/shidoitsuka/hi-ava.git`
-2. Rename `config.js.example` to `config.js`
-3. Rename `variables.js.example` to `variables.js.example` inside `assets/` folder
+2. Edit `config.js` file
+3. Edit `variables.js` file inside `assets/` folder
 4. Open `config.js` and fill the host and port (if needed)
 5. Open `variables.js` and fill the required variables (examples in the file)
 6. Open your command prompt/terminal and install the required dependencies :
