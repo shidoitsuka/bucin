@@ -17,6 +17,7 @@ audio {
   font-family: "Lilita One", cursive;
   font-size: 2.1rem;
   text-align: center;
+  z-index: 1;
 }
 .vue-typed {
   min-height: 4em;
@@ -24,6 +25,7 @@ audio {
 .quotes {
   font-family: "Montserrat", sans-serif;
   text-align: center;
+  z-index: 1;
 }
 .quotes-main {
   font-size: 1.1rem;
