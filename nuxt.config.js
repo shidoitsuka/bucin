@@ -1,4 +1,6 @@
 import colors from "vuetify/es5/util/colors";
+import config from "./config";
+const { host, port } = config;
 
 export default {
   mode: "spa",
@@ -72,8 +74,8 @@ export default {
     }
   },
   server: {
-    port: 3000, // default: 3000
-    host: "192.168.0.105" // default: localhost
+    port,
+    host
   },
   /*
    ** Build configuration
@@ -87,7 +89,7 @@ export default {
         test: /\.(ogg|mp3|wav|mpe?g)$/i,
         loader: "file-loader",
         options: {
-          name: "~/assets/music.mp3"
+          name: "~/assets/music.ogg"
         }
       });
     }
