@@ -5,18 +5,18 @@
       :color="darkMode() ? '#f5f5f5' : '#171717'"
       :particleOpacity="0.7"
       :particlesNumber="30"
-      shapeType="circle"
       :particleSize="4"
-      linesColor="#dedede"
       :linesWidth="1"
       :lineLinked="true"
       :lineOpacity="0.4"
       :linesDistance="150"
       :moveSpeed="3"
       :hoverEffect="true"
-      hoverMode="grab"
       :clickEffect="true"
+      hoverMode="grab"
       clickMode="push"
+      linesColor="#dedede"
+      shapeType="circle"
     />
     <audio src="~/assets/music.ogg" autoplay controls />
     <div class="main">
@@ -96,173 +96,7 @@ export default {
 </script>
 
 <style lang="scss">
-.darkBG,
-.lightBG {
-  width: 100vw;
-}
-.darkBG {
-  background: linear-gradient(137deg, #2d1f3d, #614385, #516395, #6b82c2);
-  background-size: 800% 800%;
-  color: #121829;
-
-  -o-webkit-animation: darkGradient 11s ease infinite;
-  -o-moz-animation: darkGradient 11s ease infinite;
-  animation: darkGradient 11s ease infinite;
-}
-.lightBG {
-  background: linear-gradient(137deg, #ffc3a0, #ffafbd, #dd5e89);
-  background-size: 600% 600%;
-  color: #4f3d3f;
-
-  -o-webkit-animation: lightGradient 8s ease infinite;
-  -o-moz-animation: lightGradient 8s ease infinite;
-  animation: lightGradient 8s ease infinite;
-}
-audio {
-  display: none;
-}
-.particles canvas {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-.main {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-flow: column;
-}
-.typing {
-  font-family: "Lilita One", cursive;
-  font-size: 2.1rem;
-  text-align: center;
-}
-.vue-typed {
-  min-height: 4em;
-}
-.quotes {
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-}
-.quotes-main {
-  font-size: 1.1rem;
-}
-.author {
-  font-size: 0.7rem;
-}
-.popup {
-  display: block;
-  text-align: center;
-  width: 100px;
-  height: 40px;
-  position: absolute;
-  margin-left: -50px;
-  margin-top: -40px;
-  background: transparent;
-  animation: fadeIn linear 1s;
-  -o-webkit-animation: fadeIn linear 1s;
-  -o-moz-animation: fadeIn linear 1s;
-  opacity: 0;
-}
-/*.musicPlayer {
-  position: fixed;
-  bottom: 3vh;
-  right: 5vw;
-}*/
-
-@-webkit-keyframes lightGradient {
-  0% {
-    background-position: 43% 0%;
-  }
-  50% {
-    background-position: 58% 100%;
-  }
-  100% {
-    background-position: 43% 0%;
-  }
-}
-@-moz-keyframes lightGradient {
-  0% {
-    background-position: 43% 0%;
-  }
-  50% {
-    background-position: 58% 100%;
-  }
-  100% {
-    background-position: 43% 0%;
-  }
-}
-@keyframes lightGradient {
-  0% {
-    background-position: 43% 0%;
-  }
-  50% {
-    background-position: 58% 100%;
-  }
-  100% {
-    background-position: 43% 0%;
-  }
-}
-
-@-webkit-keyframes darkGradient {
-  0% {
-    background-position: 43% 0%;
-  }
-  50% {
-    background-position: 58% 100%;
-  }
-  100% {
-    background-position: 43% 0%;
-  }
-}
-@-moz-keyframes darkGradient {
-  0% {
-    background-position: 43% 0%;
-  }
-  50% {
-    background-position: 58% 100%;
-  }
-  100% {
-    background-position: 43% 0%;
-  }
-}
-@keyframes darkGradient {
-  0% {
-    background-position: 43% 0%;
-  }
-  50% {
-    background-position: 58% 100%;
-  }
-  100% {
-    background-position: 43% 0%;
-  }
-}
-
-@keyframes fadeIn {
-  50% {
-    opacity: 1;
-  }
-  100% {
-    margin-top: -100px;
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  50% {
-    opacity: 1;
-  }
-  100% {
-    margin-top: -100px;
-  }
-}
-
-@-moz-keyframes fadeIn {
-  50% {
-    opacity: 1;
-  }
-  100% {
-    margin-top: -100px;
-  }
-}
+@import "~/assets/css/animation.scss";
+@import "~/assets/css/background.scss";
+@import "~/assets/css/main.scss";
 </style>

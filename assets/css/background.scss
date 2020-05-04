@@ -1,0 +1,22 @@
+.darkBG,
+.lightBG {
+  width: 100vw;
+}
+.darkBG {
+  background: linear-gradient(137deg, #2d1f3d, #614385, #516395, #6b82c2);
+  background-size: 800% 800%;
+  color: #121829;
+
+  -o-webkit-animation: darkGradient 11s ease infinite;
+  -o-moz-animation: darkGradient 11s ease infinite;
+  animation: darkGradient 11s ease infinite;
+}
+.lightBG {
+  background: linear-gradient(137deg, #ffc3a0, #ffafbd, #dd5e89);
+  background-size: 600% 600%;
+  color: #4f3d3f;
+
+  -o-webkit-animation: lightGradient 8s ease infinite;
+  -o-moz-animation: lightGradient 8s ease infinite;
+  animation: lightGradient 8s ease infinite;
+}

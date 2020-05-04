@@ -1,0 +1,94 @@
+@-webkit-keyframes lightGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+@-moz-keyframes lightGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+@keyframes lightGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+
+@-webkit-keyframes darkGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+@-moz-keyframes darkGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+@keyframes darkGradient {
+  0% {
+    background-position: 43% 0%;
+  }
+  50% {
+    background-position: 58% 100%;
+  }
+  100% {
+    background-position: 43% 0%;
+  }
+}
+
+@keyframes fadeIn {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: -100px;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: -100px;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: -100px;
+  }
+}
