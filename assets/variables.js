@@ -1,10 +1,10 @@
 export default {
-  nicknames: ["Ava", "Babe", "Sayang", "Avakuu", "Cintuu"],
+  nicknames: ["Arma", "Beb", "Sayang", "My mine", "Cintakku"],
   greetings: {
-    evening: "Good Evening",
-    afternoon: "Good Afternoon",
-    day: "Good Day",
-    morning: "Good Morning",
-    night: "Good Night"
+    evening: "Good Evening Sayang",
+    afternoon: "Good Afternoon Sayang",
+    day: "Good Day Sayang",
+    morning: "Good Morning Sayang",
+    night: "Good Night Sayang"
   }
 };
