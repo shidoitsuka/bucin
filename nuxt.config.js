@@ -5,6 +5,15 @@ const { host, port } = config;
 export default {
   mode: "spa",
   /*
+   ** Router base for github pages deployment.
+   ** Need Documentation
+  
+  router: {
+    base: '/hi-ava/'
+  },
+  */
+
+  /*
    ** Headers of the page
    */
   // prettier-ignore
@@ -19,8 +28,7 @@ export default {
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat&display=swap" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Pacifico&display=swap" }
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat&family=Pacifico&display=swap" }
     ]
   },
   /*
