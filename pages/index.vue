@@ -10,7 +10,7 @@
       <v-card-actions>
         <v-btn text :disabled='currentPage == 0' @click="currentPage--">Prev</v-btn>
         <v-spacer></v-spacer>
-        <v-btn text @click="currentPage == 24 ? '' : currentPage++" :to="currentPage == 24 ? '/landing' : '#'">Next</v-btn>
+        <v-btn text @click="currentPage == 25 ? '' : currentPage++" :to="currentPage == 25 ? '/landing' : '#'">Next</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -51,7 +51,8 @@ export default {
         21: "Tapi udah saatnya aku sadar, kalo aku memang gak bakalan bisa pantes buat kamu.",
         22: "Maafin latar belakangku yang begini ya.",
         23: "You Deserve Much Better Than Me. Hehe",
-        24: "I ❤ You."
+        24: "Makasih udah baca sampe sini. HAHA!",
+        25: "I ❤ You."
       },
       currentPage: 0
     };
