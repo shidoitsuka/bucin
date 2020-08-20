@@ -1,166 +1,69 @@
 <template>
-  <!-- Background -->
-  <div :class="darkMode() ? 'darkBG' : 'lightBG'">
-    <!--
-      Particles
-      Documentation : https://vue-particles.netlify.app/
-    -->
-    <vue-particles
-      class="particles"
-      hoverMode="grab"
-      clickMode="push"
-      linesColor="#dedede"
-      shapeType="circle"
-      :color="darkMode() ? '#f5f5f5' : '#171717'"
-      :particleOpacity="0.7"
-      :particlesNumber="30"
-      :particleSize="4"
-      :linesWidth="1"
-      :lineLinked="true"
-      :lineOpacity="0.4"
-      :linesDistance="150"
-      :moveSpeed="3"
-      :hoverEffect="true"
-      :clickEffect="true"
-    />
-
-    <!-- Audio file -->
-    <audio src="~/assets/music.mp3" autoplay controls loop />
-
-    <!-- Main -->
-    <div class="main">
-      <!--
-        Typing characters (greeting & nickname)
-        Documentation : https://github.com/Orlandster/vue-typed-js/
-      -->
-      <!-- prettier-ignore -->
-      <vue-typed-js
-        class="vue-typed"
-        :showCursor="false"
-        :loop="true"
-        :strings="[greetings() + ', ' + nicknames + '! ^5000', 'I always wanted to tell you... ^2500', 'Nevermind! >///<']"
-        :backDelay="500"
-        :typeSpeed="100"
-        :backSpeed="20"
-        :contentType="'null'"
-      >
-        <h1 class="typing"></h1>
-      </vue-typed-js>
-
-      <!-- Quotes -->
-      <h2 class="quotes quotes-main">{{ quotes.quotes }}</h2>
-      <h3 class="quotes author">{{ quotes.author }}</h3>
-    </div>
-  </div>
+  <v-container>
+    <v-card class="mx-auto" width="300" max-height="300" outlined>
+      <v-list-item two-line>
+        <v-list-item-content>
+          <v-card-text>{{ stories[currentPage] }}</v-card-text>
+        </v-list-item-content>
+      </v-list-item>
+      <hr />
+      <v-card-actions>
+        <v-btn text :disabled='currentPage == 0' @click="currentPage--">Prev</v-btn>
+        <v-spacer></v-spacer>
+        <v-btn text @click="currentPage == 23 ? '' : currentPage++" :to="currentPage == 23 ? '/landing' : '#'">Next</v-btn>
+      </v-card-actions>
+    </v-card>
+    <audio src="~/assets/music.mp3" autoplay controls loop style="position: fixed; top: -500vh" />
+  </v-container>
 </template>
 
 <script>
-// Import quotes and variables
-import quotesFile from "~/assets/quotes.js";
-import variables from "~/assets/variables.js";
-
-// Define greetings
-const { greetings } = variables;
-
-// Get time
-const now = new Date().getHours();
-
-// Client-side rendering
-if (process.browser) {
-  /*
-   * Function random polyfill
-   * Usage   : random(["this", "is", "an", "array"]);
-   * Output  : randomize array values
-   */
-  function random(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
-
-  // Window on ready (server has rendered everything)
-  window.onNuxtReady(app => {
-    // Add event for click
-    document.addEventListener("click", function(ev) {
-      // Get coordinates where user clicks (X & Y)
-      const x = ev.clientX;
-      const y = ev.clientY;
-
-      // Make a new element
-      let el = document.createElement("div");
-
-      // Fill with ♥
-      el.innerHTML = `<h1>${random(["♥", "♥♥", "♥♥♥"])}</h1>`;
-
-      // Add "popup" class
-      el.classList.add("popup");
-
-      // Define the position based on where user's clicked
-      el.style.left = `${x}px`;
-      el.style.top = `${y}px`;
-
-      // Render it (show it to user)
-      document.body.appendChild(el);
-
-      // Set timeout before deletes after 3 secs it to reduce lags
-      setTimeout(function() {
-        el.style.display = "none";
-      }, 3000);
-    });
-  });
-}
-
 export default {
-  transition: "slide-x-transition",
   data() {
     return {
-      // prettier-ignore
-      nicknames: this.random(variables.nicknames), // random the nicknames (from variables.js)
-      quotes: this.random(quotesFile), // random the quotes (from variables.js)
-      greetings: function() {
-        // If right now is equals to or greater than 18 (6pm), show evening greeting
-        if (now >= 18) return greetings.evening;
-
-        // If right now is equals to or greater than 15 (3pm), show afternoon greeting
-        if (now >= 15) return greetings.afternoon;
-
-        // If right now is equals to or greater than 11 (11am), show day greeting
-        if (now >= 11) return greetings.day;
-
-        // If right now is equals to or greater than 5 (5am), show morning greeting
-        if (now >= 5) return greetings.morning;
-
-        // If right now is equals to or greater than 0 (12am), show sleep greeting
-        if (now >= 0) return greetings.night;
+      stories: {
+        0: `Hi! Makasih udah buka ini.
+        Jangan klik next kalo belum siap nahan cringe ya,
+        soalnya kamu tau sendiri kan kalo aku udah ngomong panjang lebar itu biasanya berakhir cringe :p`,
+        1: `Jadi gini, paling pertama aku mau minta maaf karna ngecewain kamu.
+        Jujur aja, aku beneran ga ada niatan lain selain ngejaga perasaanmu waktu berangkat ke malang itu.`,
+        2: `Aku mau minta maaf juga karena udah ngehabisin 4 bulan mu sama orang kayak aku,
+        ntah knp aku udah ngerasa kalo waktu - waktu kaya gini tuh bakalan dateng. Cepat/lambat.`,
+        3: "Tau ga kok aku bisa tau?",
+        4: `We live on different world, baby.
+        I have literally nothing on my life:) Se-keras apapun aku nyoba buat ngimbangin kamu, fakta gak bakalan bisa berubah kalo aku ini ya... gini.`,
+        5: "You have almost everything, and I have almost nothing.",
+        6: `Ga perlu kujelasin lagi pasti udah paham kan? wkwk
+        Oiya, tenang aja. Aku ga ada maksud aneh - aneh lewat web sederhana ini kok.`,
+        7: `Aku ga minta kamu balik ke aku juga kok. Aku cuma pengen kamu ga benci aku, atau minimal berkurang deh rasa benci nya.`,
+        8: "Aku memang gak pernah pantes buat kamu, dan gak ada yang bisa ngubah fakta itu.",
+        9: `Kedua, aku pernah bilang kan "kalopun kita ga bareng selamanya, minimal aku mau berguna buat kamu dengan cara ngerubah kamu menjadi lebih baik lagi"?`,
+        10: `Aku mau bilang kamu itu cantik, suaramu itu bagus, pola pikirmu juga ok walaupun beberapa harus di benahi (menurutku sih hehe). Tanggal 19 Agustus waktu aku nongkong sama temenku yang dari sidoarjo, semuanya setuju kalo kamu itu memang lebih good looking daripada mantanku yang aku ga mau nyebutin namanya.`,
+        11: `Kelebihanmu jauh lebih banyak kalo ku jabarin satu - persatu.`,
+        12: "Ketiga, aku mau minta maaf kalo selama ini aku juga gak sepenuhnya jujur sama kamu. Mulai dari soal kondisi pribadiku, keluargaku, dan lain sebagainya.",
+        13: `Bukannya aku pembohong. Karena tiap kamu nanya, aku selalu jawab apa adanya. Tapi ketika kamu gak nanya, aku gak pernah cerita.`,
+        14: "Karena aku sadar, aku ini se-nggak pantes itu buat kamu.",
+        15: "Maafin keegoisanku yang bikin aku gak mau cerita soal semuanya.",
+        16: "Maafin keegoisanku yang bikin aku gak mau ninggalin kamu secepat itu.",
+        17: "Maafin keegoisanku yang bikin aku pengen kamu seutuhnya.",
+        18: "Se-egois itu aku? Iya. Bener kok. Maaf ya chelsea",
+        19: "Waktu kita emang singkat. Sangat singkat. Tapi kamu ngasih aku warna baru di kehidupanku.",
+        20: "Aku gak mau kita berakhir.",
+        21: "Tapi udah saatnya aku sadar, kalo aku memang gak bakalan bisa pantes buat kamu.",
+        22: "Maafin latar belakangku yang begini ya.",
+        23: "I ❤ You."
       },
-      darkMode: function() {
-        // If right now is equals to or greater than 18 (6pm), turn on darkmode
-        if (now >= 18) return true;
-
-        // If right now is equals to or greater than 15 (3pm), turn on daymode
-        if (now >= 15) return false;
-
-        // If right now is equals to or greater than 11 (11am), turn on daymode
-        if (now >= 11) return false;
-
-        // If right now is equals to or greater than 5 (5am), turn on daymode
-        if (now >= 5) return false;
-
-        // If right now is equals to or greater than 0 (12am), turn on darkmode
-        if (now >= 0) return true;
-      }
+      currentPage: 0
     };
-  },
-  methods: {
-    /* server side methods */
-    // Randomize array element
-    random: function(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
   }
 };
 </script>
 
 <style lang="scss">
-@import "~/assets/css/animation.scss";
-@import "~/assets/css/background.scss";
-@import "~/assets/css/main.scss";
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
