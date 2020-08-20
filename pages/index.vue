@@ -13,7 +13,6 @@
         <v-btn text @click="currentPage == 23 ? '' : currentPage++" :to="currentPage == 23 ? '/landing' : '#'">Next</v-btn>
       </v-card-actions>
     </v-card>
-    <audio src="~/assets/music.mp3" autoplay controls loop style="position: fixed; top: -500vh" />
   </v-container>
 </template>
 
